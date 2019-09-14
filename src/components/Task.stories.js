@@ -19,7 +19,9 @@ export const actions = {
 
 storiesOf("Task", module)
   .addDecorator(withKnobs)
-  .add("default", () => <Task task={task} {...actions} />)
+  .add("default", () => {
+    return <Task task={object("task", { ...task })} {...actions} />;
+  })
   .add("pinned", () => (
     <Task task={{ ...task, state: "TASK_PINNED" }} {...actions} />
   ))
